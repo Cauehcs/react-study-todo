@@ -1,10 +1,13 @@
-import { ReactChild, ReactFragment, ReactPortal } from "react";
+import { useState } from "react";
+import { Container } from "./styles";
 
-export function Task(props: { title: string | ReactChild | ReactFragment | ReactPortal | null | undefined; }) {
- return (
-  <div className="task">
-    <h1>Task: {props.title}</h1>
-    <input type="checkbox" />
-  </div>
- )
+export function Task() {
+  const [done, setDone] = useState(false);
+
+  return (
+    <Container done={done}>
+      <input type="checkbox" onChange={() => { setDone(!done) }} />
+      <p>Mostrar Componentes</p>
+    </Container>
+  )
 }
